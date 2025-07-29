@@ -5,8 +5,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import connectToSocket from "./controller/socketManager.js";
 import userRoutes from "./routes/user.routes.js";
-
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const server = createServer(app);
@@ -15,7 +15,8 @@ const io = connectToSocket(server);
 const PORT = process.env.PORT || 8001; // ✅ Fix PORT issue
 
 //  Correct MongoDB Connection (Use `.env` instead of hardcoding credentials)
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/apnaVideoCall";
+const MONGO_URI = process.env.MONGO_URI
+// || "mongodb://127.0.0.1:27017/apnaVideoCall";
 
 const start = async () => {
     try {
@@ -47,48 +48,3 @@ app.use("/api/v1/users", userRoutes); // ✅ Use user routes
 start();
 
 
-// import express from "express";
-// import {createServer} from "node:http";
-// import {Server} from "socket.io";
-// import mongoose from "mongoose";
-// import cors from "cors";
-// // const app = express();
-// const app = express();
-// const server = createServer(app);
-// const io = new Server(server);
-
-// app.set("port",(process.env.port || 8001))
-
-
-// // server.listen(app.get("port"),(req,res)=>{
-// //      console.log("listening to port 8000 ");
-     
-// // })
-
-
-// //mongodb+srv://rv0701211:Rohit@2004@cluster0.4jkngfa.mongodb.net/
-
-// const start = async() =>{
-//     app.set("mongo_user")
-//     //    const connectionDb = await mongoose.connect("mongodb://rv0701211:Rohit@2004@cluster0.4jkngfa.mongodb.net/")
-//     //    console.log(`connection is success: ${connectionDb.connection.host}`);
-//     // mongoose.connect('mongodb+srv://rv0701211:Rohit@2004@cluster0.mongodb.net/apnaVideoCall?retryWrites=true&w=majority', {
-//     //     useNewUrlParser: true,
-//     //     useUnifiedTopology: true,
-//     //   });
-
-//       mongoose.connect('mongodb://127.0.0.1:27017/apnaVideoCall', {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//       });
-//     server.listen(app.get("port"),(req,res)=>{
-//         console.log("listening to port 8000 ");
-        
-//    })
-// }
-
-// app.get("/home",(req,res)=>{
-//     res.send("mai aa gyaa");
-// })
-
-// start();
