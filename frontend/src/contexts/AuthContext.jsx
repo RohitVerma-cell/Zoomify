@@ -2,13 +2,15 @@ import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import httpStatus from 'http-status';
 import { useNavigate } from 'react-router-dom';
+import server from '../environment';
 
-//Create the AuthContext
+
 export const AuthContext = createContext({});
 
-//Create an axios client with correct baseURL
+
 const client = axios.create({
-  baseURL: 'http://localhost:8001/api/v1/users', 
+  // baseURL: 'http://localhost:8001/api/v1/users', 
+  baseURL: `${server}/api/v1/users`, 
   headers: {
     'Content-Type': 'application/json',
   },
@@ -35,25 +37,8 @@ const handleRegister = async (name, username, password) => {
   }
 };
 
-  // const handleLogin = async(username, password) =>{
-  //     try {
-  //       let request = await client.post("/login",{
-  //           username: username,
-  //           password: password
-  //       })
-
-  //       if(request.status === httpStatus.OK){
-  //           localStorage.setItem('token',request.data.token)
-  //       }
-       
-
-  //     } catch (error) {
-  //       throw error;
-  //     }
-  // }
- const navigate = useNavigate(); // 👈 Use inside a component or hook
+ const navigate = useNavigate(); 
   const handleLogin = async (username, password) => {
-  // const navigate = useNavigate(); // 👈 Use inside a component or hook
 
   try {
     let request = await client.post('/login', {

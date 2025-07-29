@@ -12,10 +12,10 @@ import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
 import styles from '../styles/VideoComponent.module.css';
 import { useNavigate } from 'react-router-dom';
-// import server from '../environment';
+import server from '../environment';
 
-// const server_url = server;
-const server_url = 'http://localhost:8001';
+const server_url = server;
+// const server_url = 'http://localhost:8001';
 var connections = {};
 
 const peerConfigConnections = {

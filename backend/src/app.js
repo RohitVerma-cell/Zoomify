@@ -12,11 +12,10 @@ const app = express();
 const server = createServer(app);
 const io = connectToSocket(server);
 
-const PORT = process.env.PORT || 8001; // ✅ Fix PORT issue
+const PORT = 8001; 
 
-//  Correct MongoDB Connection (Use `.env` instead of hardcoding credentials)
+
 const MONGO_URI = process.env.MONGO_URI
-// || "mongodb://127.0.0.1:27017/apnaVideoCall";
 
 const start = async () => {
     try {
